@@ -25,6 +25,22 @@ jobs:
         id: get-dotnet-version
         run: echo "::set-output name=version::$(grep -oP '<TargetFramework>(.*)<\/TargetFramework>' SafeAgainst.csproj | grep -oP '\d\.\d')"
 
+      - name: Install .NET Core
+        run: |
+          DOTNET_VERSION=${{ steps.dotnet_version.outputs.version }}
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            choco install dotnet-sdk --version $DOTNET_VERSION
+          elif [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+            wget https://download.visualstudio.microsoft.com/download/pr/4d174497-74c3-4bf1-afe9-59c5a3810a4a/0a99d860da08e596727027510a68f250/dotnet-sdk.1.0.16-linux-arm64.tar.gz -O dotnet-sdk.tar.gz
+            mkdir -p $HOME/dotnet
+            tar zxf dotnet-sdk.tar.gz -C $HOME/dotnet
+            export PATH=$HOME/dotnet:$PATH
+          else
+            # Add logic for other operating systems
+            echo "Unsupported OS: ${{ matrix.os }}"
+            exit 1
+          fi
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
