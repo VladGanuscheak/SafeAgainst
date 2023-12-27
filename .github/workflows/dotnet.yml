@@ -1,0 +1,54 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'releases/*'
+  pull_request:
+    branches:
+      - 'main'
+      - 'releases/*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Get .NET Version from Project File
+        id: get-dotnet-version
+        run: echo "::set-output name=version::$(grep -oP '<TargetFramework>(.*)<\/TargetFramework>' SafeAgainst.csproj | grep -oP '\d\.\d')"
+
+      - name: Install .NET Core
+        run: |
+          DOTNET_VERSION=${{ steps.dotnet_version.outputs.version }}
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            choco install dotnet-sdk --version $DOTNET_VERSION
+          elif [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+            wget https://download.visualstudio.microsoft.com/download/pr/75a5d1ff-c9ba-425d-9b94-6f3e7c4da968/39903076672cf8dc7a4da715450b274e/dotnet-dev-ubuntu-x64.1.1.14.tar.gz -O dotnet-sdk.tar.gz
+            mkdir -p $HOME/dotnet
+            tar zxf dotnet-sdk.tar.gz -C $HOME/dotnet
+            export PATH=$HOME/dotnet:$PATH
+          else
+            # Add logic for other operating systems
+            echo "Unsupported OS: ${{ matrix.os }}"
+            exit 1
+          fi
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ steps.dotnet_version.outputs.version }}
+
+      - name: Change Directory and Run Commands
+        run: |
+          cd SafeAgainst
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet test
