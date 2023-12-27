@@ -16,7 +16,7 @@ namespace SafeAgainst.Tests
             }
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithDefaultByReference_Modified()
         {
             // Arrange
@@ -30,7 +30,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithDefaultByContainer_Modified()
         {
             // Arrange
@@ -46,7 +46,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithReplaceWithParamByReference_Modified()
         {
             // Arrange
@@ -60,7 +60,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithReplaceWithParamByContainer_Modified()
         {
             // Arrange
@@ -76,7 +76,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithReplaceWithoutParamByReference_Modified()
         {
             // Arrange
@@ -90,7 +90,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public void Against_PredicateWithReplaceWithoutParamByContainer_Modified()
         {
             // Arrange
@@ -106,7 +106,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public async Task Against_PredicateWithAsyncReplaceWithParamByContainer_Modified()
         {
             // Arrange
@@ -123,7 +123,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public async Task Against_PredicateWithAsyncReplaceWithoutParamByContainer_Modified()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public async Task Against_AsyncPredicateWithAsyncReplaceWithParamByContainer_Modified()
         {
             // Arrange
@@ -157,7 +157,7 @@ namespace SafeAgainst.Tests
             Assert.Equal(2, value);
         }
 
-        [Func]
+        [Fact]
         public async Task Against_AsyncPredicateWithAsyncReplaceWithoutParamByContainer_Modified()
         {
             // Arrange
