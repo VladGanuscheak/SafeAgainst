@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <PackageId>SafeAgainst</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Ganușceac Vlad</Authors>
+    <Product>SafeAgainst</Product>
+    <Title>SafeAgainst</Title>
+    <Description>Provides functionality for creation of both synchronous and asynchronous generic guard clauses with custom preconditions and already contains implementation of basic ones for Collections, Enums, Strings, Objects and Numeric types.</Description>
+    <RepositoryUrl>https://github.com/VladGanuscheak/OperationResult.ErrorHandling</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>safeagainst;guardclauses;guard;clauses;preconditions;.net;dotnet;c#</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="C:\Users\User\Desktop\Logos\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
