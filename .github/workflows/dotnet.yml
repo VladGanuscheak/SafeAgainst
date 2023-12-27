@@ -32,7 +32,7 @@ jobs:
 
       - name: Change Directory and Run Commands
         run: |
-          cd OperationResult.Net
+          cd SafeAgainst
           dotnet restore
           dotnet build --configuration Release
           dotnet test
