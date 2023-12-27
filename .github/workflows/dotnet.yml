@@ -1,0 +1,38 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'releases/*'
+  pull_request:
+    branches:
+      - 'main'
+      - 'releases/*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Get .NET Version from Project File
+        id: get-dotnet-version
+        run: echo "::set-output name=version::$(grep -oP '<TargetFramework>(.*)<\/TargetFramework>' SafeAgainst.csproj | grep -oP '\d\.\d')"
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ steps.dotnet_version.outputs.version }}
+
+      - name: Change Directory and Run Commands
+        run: |
+          cd OperationResult.Net
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet test
