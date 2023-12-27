@@ -8,7 +8,7 @@
     <Product>SafeAgainst</Product>
     <Title>SafeAgainst</Title>
     <Description>Provides functionality for creation of both synchronous and asynchronous generic guard clauses with custom preconditions and already contains implementation of basic ones for Collections, Enums, Strings, Objects and Numeric types.</Description>
-    <RepositoryUrl>https://github.com/VladGanuscheak/OperationResult.ErrorHandling</RepositoryUrl>
+    <RepositoryUrl>https://github.com/VladGanuscheak/SafeAgainst</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>safeagainst;guardclauses;guard;clauses;preconditions;.net;dotnet;c#</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
