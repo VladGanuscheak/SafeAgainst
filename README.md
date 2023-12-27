@@ -122,7 +122,7 @@ internal enum PowerOfTwo
     Assert.True(enumeration.ToList().Count == 3);
 ```
 
-See way much more examples in the unit tests from the corresponding source repository.
+***See way much more examples in the unit tests from the corresponding source repository.***
 
 ### Global Picture
 
