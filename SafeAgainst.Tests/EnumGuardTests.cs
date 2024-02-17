@@ -26,8 +26,8 @@ namespace SafeAgainst.Tests
             EnumGuards.Safe<PowerOfTwo>.AgainstNotInRange(ref powerOfTwo, PowerOfTwo.One);
 
             // Assert
-            Assert.True(initialValue == 0);
-            Assert.Equal(powerOfTwo, PowerOfTwo.One);
+            Assert.Equal(0, (int)initialValue);
+            Assert.Equal(PowerOfTwo.One, powerOfTwo);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace SafeAgainst.Tests
             powerOfTwo = container.Value;
 
             // Assert
-            Assert.True(initialValue == 0);
+            Assert.Equal(0, (int)initialValue);
             Assert.Equal(PowerOfTwo.One, powerOfTwo);
         }
 
